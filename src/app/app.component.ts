@@ -16,8 +16,7 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'ECommerceClient';
-  constructor() {
-    /* #region Toastr */
+  constructor() {  /* #region Toastr */
     // toastrService.message("merhaba","nuri",{messageType:ToastrMessageType.Info,
     // position:ToastrPosition.TopFullWidth
     // });
@@ -34,6 +33,9 @@ export class AppComponent {
     
     
    
+
+ 
+ 
   }
 }
 
