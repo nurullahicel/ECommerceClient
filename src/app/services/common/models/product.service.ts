@@ -3,7 +3,7 @@ import { HttpClientService } from '../http-client.service';
 import { Create_Product } from '../../../contracts/create_product';
 import { HttpErrorResponse } from '@angular/common/http';
 import { List_Product } from '../../../contracts/list_product';
-import { firstValueFrom } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 
 
 @Injectable({
@@ -30,12 +30,24 @@ export class ProductService {
   }
   
   
-  async read(page:number=0,size:number=5,successCallBack:()=>void,errorCallBack?:(errorMessage:string)=>void):Promise<List_Product[]>{
-   const promiseData:Promise<List_Product[]>=firstValueFrom(await this.httpClientService.get<List_Product[]>({controller:"products",queryString:`page=${page}&size=${size}`}));
+  async read(page:number=0,size:number=5,successCallBack:()=>void,errorCallBack?:(errorMessage:string)=>void):Promise<{ totalProductCount: number; products: List_Product[] }>{
+   const promiseData:Promise<{ totalProductCount: number; products: List_Product[] }>=firstValueFrom(await this.httpClientService.get<{ totalProductCount: number; products: List_Product[] }>({controller:"products",queryString:`page=${page}&size=${size}`}));
   promiseData.then(d=>successCallBack())
   .catch((errorResponse:HttpErrorResponse)=>errorCallBack(errorResponse.message));
 
   return await promiseData;
   
-  }
+  
+
+
+
+}
+async delete(id:string){
+  const deleteObservable:Observable<any>=this.httpClientService.delete<any>({
+    controller:"products"
+  },id);
+  await firstValueFrom(deleteObservable)
+}
+
+
 }

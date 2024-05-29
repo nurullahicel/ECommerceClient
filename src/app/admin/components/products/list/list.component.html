@@ -29,13 +29,24 @@
         <th mat-header-cell *matHeaderCellDef> Updated Date </th>
         <td mat-cell *matCellDef="let element"> {{element.updatedDate}} </td>
       </ng-container>
+      <ng-container matColumnDef="Edit">
+        <th mat-header-cell *matHeaderCellDef width="40px"> Edit </th>
+        <td mat-cell *matCellDef="let element"> <img src="../../../../../assets/Edit.png" width="25px" height="25px"> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Delete" >
+        <th mat-header-cell *matHeaderCellDef width="40px"> Delete </th>
+         <td [id]="element.id" mat-cell *matCellDef="let element" appDelete (callback)="getProducts()"> </td>  <!--  <img src="../../../../../assets/Delete.png" width="25px" height="25px" (click)="delete(element.id,$event)" />--> 
+      </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
-  </div>
+    <mat-paginator (page)="pageChanged()"
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
+  
