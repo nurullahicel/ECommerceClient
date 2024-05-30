@@ -4,6 +4,7 @@ import { Create_Product } from '../../../../contracts/create_product';
 import { BaseComponent, SpinnerType } from '../../../../base/base.component';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { IziToastService, MessageType, Position } from '../../../../services/admin/izi-toast.service';
+import { FileUploadOptions } from '../../../../services/common/fileupload/fileupload.component';
 
 @Component({
   selector: 'app-create',
@@ -19,6 +20,13 @@ constructor(spinner:NgxSpinnerService,private productService:ProductService,priv
   }
 
 @Output() createdProduct:EventEmitter<Create_Product> = new EventEmitter();
+@Output() fileUploadOptions:Partial<FileUploadOptions>={
+  action:"upload",
+  controller:"products",
+  explanation:"Resimleri sürükleyin veya seçin..",
+  isAdminPage:true,
+  accept:".png,.jpeg,.jpg"
+};
 
 create(name:HTMLInputElement,stock:HTMLInputElement,price:HTMLInputElement){
 this.showSpinner(SpinnerType.SquareLoader)

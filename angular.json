@@ -43,7 +43,9 @@
               "node_modules/ngx-spinner/animations/square-loader.css",
               "node_modules/ngx-spinner/animations/cube-transition.css",
               "node_modules/ngx-spinner/animations/square-jelly-box.css",
-              "node_modules/ngx-spinner/animations/square-spin.css"
+              "node_modules/ngx-spinner/animations/square-spin.css",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
 
             ],
             "scripts": [
