@@ -1,0 +1,10 @@
+<div style="background-color: #335c67;">
+    <h2 mat-dialog-title>Dikkat!</h2>
+        <div mat-dialog-content>
+            <p>Dosyaları yüklemek istediğinizden emin misiniz?</p>    
+        </div>
+          <div mat-dialog-actions>
+            <button mat-button (click)="close()"  style="background-color: red;">Hayır!</button>
+            <button mat-button [mat-dialog-close]="data"  cdkFocusInitial style="background-color: green;">Evet.</button>
+          </div>
+    </div>

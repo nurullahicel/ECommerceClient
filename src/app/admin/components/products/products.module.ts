@@ -11,30 +11,31 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { DeleteDirective } from '../../../directives/admin/delete.directive';
-import { DialogModule } from 'primeng/dialog';
-import {MatDialogModule} from '@angular/material/dialog';
-import { DeleteDialogComponent } from '../../../dialogs/delete-dialog/delete-dialog.component';
+import { DialogModule } from '@angular/cdk/dialog';
 import { FileuploadModule } from '../../../services/common/fileupload/fileupload.module';
+import { FileUploadDialogComponent } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
+
+
 
 @NgModule({
-  declarations: [ProductsComponent, CreateComponent, ListComponent,DeleteDirective,DeleteDialogComponent],
+  declarations: [ProductsComponent, CreateComponent, ListComponent,DeleteDirective],
   imports: [
     CommonModule,
     RouterModule.forChild([
       {
         path: "",
-        component: ProductsComponent,
-        
+        component: ProductsComponent
       },
+    
     ]),
-    MatSidenavModule,
+    MatSidenavModule,    
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
     DialogModule,
-    MatDialogModule,FileuploadModule
+    FileuploadModule   
   ],
 })
 export class ProductsModule {}
