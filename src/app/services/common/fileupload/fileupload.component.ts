@@ -19,6 +19,7 @@ import {
 } from '../../../dialogs/file-upload-dialog/file-upload-dialog.component';
 import { DialogService } from '../dialog.service';
 import { SpinnerType } from '../../../base/base.component';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-fileupload',
@@ -31,7 +32,8 @@ export class FileuploadComponent {
     private iziToast: IziToastService,
     private customToastrService: CustomToastrService,
     private dialog: MatDialog,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    private spinner:NgxSpinnerService
   ) {}
 
   public files: NgxFileDropEntry[];
@@ -48,7 +50,7 @@ export class FileuploadComponent {
    
     this.dialogService.openDialog({componentType:FileUploadDialogComponent,
       data:FileUploadDialogState.Yes,afterClosed:()=> {
-        
+        this.spinner.show(SpinnerType.SquareSpin)
         this.httpClientService
         .post(
           {
@@ -62,6 +64,7 @@ export class FileuploadComponent {
         .subscribe(
           (data) => {
             const message: string = 'Dosyalar başarıyla eklenmiştir.';
+            this.spinner.hide(SpinnerType.SquareSpin);
             if (this.options.isAdminPage) {
               this.iziToast.message(
                 'Başarılı',
@@ -75,6 +78,7 @@ export class FileuploadComponent {
                 messageType: ToastrMessageType.Success,
               });
             }
+            
           },
           (errorResponse: HttpErrorResponse) => {
             const message: string ='Dosyalar yüklenirken bir hata ile karşılaşımıştır.';
@@ -92,6 +96,7 @@ export class FileuploadComponent {
                 messageType: ToastrMessageType.Error,
               });
             }
+            
           }
         );
         
