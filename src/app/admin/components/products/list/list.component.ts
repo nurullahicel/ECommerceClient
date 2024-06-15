@@ -10,6 +10,8 @@ import {
   Position,
 } from '../../../../services/admin/izi-toast.service';
 import { MatPaginator } from '@angular/material/paginator';
+import { DialogService } from '../../../../services/common/dialog.service';
+import { SelectProductImageDialogComponent } from '../../../../dialogs/select-product-image-dialog/select-product-image-dialog.component';
 
 declare var $: any;
 
@@ -22,7 +24,8 @@ export class ListComponent extends BaseComponent implements OnInit {
   constructor(
     private productService: ProductService,
     spinner: NgxSpinnerService,
-    private iziToast: IziToastService
+    private iziToast: IziToastService,
+    private dialogService:DialogService
   ) {
     super(spinner);
   }
@@ -32,6 +35,7 @@ export class ListComponent extends BaseComponent implements OnInit {
     'price',
     'createdDate',
     'updatedDate',
+    'photos',
     'Edit',
     'Delete',
   ];
@@ -60,6 +64,16 @@ export class ListComponent extends BaseComponent implements OnInit {
     this.paginator.length = allProducts.totalProductCount;
   }
 
+  addProductImages(id:string){
+    this.dialogService.openDialog({
+      componentType:SelectProductImageDialogComponent,
+      data:id,
+      options:{
+        width:"1200px"
+      }
+
+    })  
+  }
   async pageChanged() {
     await this.getProducts();
   }

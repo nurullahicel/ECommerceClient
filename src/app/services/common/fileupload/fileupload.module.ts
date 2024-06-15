@@ -13,7 +13,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    FileuploadComponent
+    FileuploadComponent,
+    FileUploadDialogComponent
   ],
   imports: [
     CommonModule,
