@@ -8,16 +8,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { SelectProductImageDialogComponent } from './select-product-image-dialog/select-product-image-dialog.component';
 import { ProductsComponent } from '../admin/components/products/products.component';
 import { FileuploadModule } from '../services/common/fileupload/fileupload.module';
-
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
     declarations: [DeleteDialogComponent, SelectProductImageDialogComponent],
     imports: [
         CommonModule,
-        MatDialogModule,
-        MatButtonModule,
+        MatDialogModule,MatCardModule,MatButtonModule,        
         FileuploadModule
+        
     ]
 })
 export class DialogModule { }
