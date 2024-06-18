@@ -1,0 +1,56 @@
+
+<div class="row" >
+    <div class="col-md-1 " ></div>
+    <div class="col-md-10">
+      <form [formGroup]="frm" (ngSubmit)="onSubmit(frm.value)">       
+        <div class=" md-3" >
+            <label for="Name" class="form-label">First name</label>
+            <input type="text" formControlName="name" class="form-control" id="Name" placeholder="First Name" 
+            [ngClass]="{'is-invalid':submitted && component.name.errors}" >
+            <div  class="form-text" *ngIf="submitted && component.name.errors?.required" style="color: red;">Please enter your first name.</div>
+            <div  class="form-text" *ngIf="submitted &&(component.name.errors?.minlength||component.name.errors?.maxlength )" style="color: red;">First name must be between 2 and 30 characters.</div>
+          </div>
+
+          <div class=" md-3" >
+            <label for="Surname" class="form-label">Last name</label>
+            <input type="text" formControlName="surname" class="form-control" id="Surname" placeholder="Last Name"
+            [ngClass]="{'is-invalid':submitted && component.surname.errors}">
+            <div  class="form-text" *ngIf="submitted && component.surname.errors?.required" style="color: red;">Please enter your last name.</div>
+            <div  class="form-text" *ngIf="submitted && (component.surname.errors?.maxlength||component.surname.errors?.minlength)" style="color: red;">Last name must be between 2 and 30 characters.</div>
+          </div>
+
+        <div class="mb-3">
+            <label for="Username" class="form-label">Username</label>
+            <input type="text" formControlName="username" class="form-control" id="Username" placeholder="Username"
+            [ngClass]="{'is-invalid':submitted && component.username.errors}">
+            <div  class="form-text" *ngIf="submitted && component.username.errors?.required" style="color: red;">Please enter your username.</div>
+            <div  class="form-text" *ngIf="submitted && (component.username.errors?.maxlength||component.username.errors?.minlength)" style="color: red; ">Username must be between 2 and 30 characters.</div>
+          </div>
+        <div class="mb-3">
+          <label for="Email" class="form-label">Email address</label>
+          <input type="email" formControlName="email" class="form-control" id="Email" placeholder="Email" 
+          [ngClass]="{'is-invalid':submitted && component.email.errors}">          
+          <div  class="form-text" *ngIf="submitted && component.email.errors?.required" style="color: red;">Please enter your email.</div>
+          <div  class="form-text" *ngIf="submitted && component.email.errors?.email" style="color: red;">Please enter your email in email format.</div>
+        </div>
+        <div class="mb-3">
+          <label for="Password" class="form-label" >Password</label>
+          <input type="password" formControlName="password" class="form-control" id="Password" placeholder="Password" 
+          [ngClass]="{'is-invalid':submitted && component.password.errors}">
+          <!-- <div  class="form-text" *ngIf="submitted && component.password.errors?.required" style="color: red;">Please enter your password.</div>
+            <div  class="form-text" *ngIf="submitted && (component.password.errors?.maxlength||component.password.errors?.minlength)" style="color: red; ">Password must be between 8 and 20 characters.</div> -->
+        </div>
+        <div class="mb-3">
+            <label for="ConfirmPassword" class="form-label" >Confirm your password</label>
+            <input type="password" formControlName="confirmPassword" class="form-control" id="ConfirmPassword" placeholder="Confirm Your Password" [ngClass]="{'is-invalid':submitted && component.confirmPassword.errors}">
+            <!-- <div  class="form-text" *ngIf="submitted && component.confirmPassword.errors?.required" style="color: red;">Please enter your password again.</div>
+            <div  class="form-text" *ngIf="submitted && (component.confirmPassword.errors?.maxlength||component.confirmPassword.errors?.minlength)" style="color: red; ">Password must be between 8 and 20 characters.</div> -->
+            <div *ngIf="submitted && frm.hasError('notSame')" style="color: red;">Passwords do not match.</div>
+          </div>
+     <br>
+        <button type="submit" class="btn btn-primary">Register</button>
+      </form></div>
+    <div class="col-md-1 "></div>
+    
+    
+</div>
