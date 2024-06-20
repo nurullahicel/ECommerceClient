@@ -15,18 +15,21 @@ import {
   ToastrMessageType,
   ToastrPosition,
 } from '../../../services/ui/custom-toastr.service';
+import { BaseComponent } from '../../../base/base.component';
+import { NgxSpinner, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent extends BaseComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
-    private toastrService: CustomToastrService
-  ) {}
+    private toastrService: CustomToastrService,
+    spinner:NgxSpinnerService
+  ) {super(spinner)}
   frm: FormGroup;
   ngOnInit(): void {
     this.frm = this.formBuilder.group(
@@ -57,7 +60,9 @@ export class RegisterComponent implements OnInit {
         ],
         email: [
           '',
-          [Validators.required, Validators.maxLength(30), Validators.email],
+          [Validators.required, 
+            Validators.maxLength(30), 
+            Validators.email],
         ],
         password: [
           '',
@@ -115,7 +120,7 @@ export class RegisterComponent implements OnInit {
        messageType: ToastrMessageType.Error,
        position: ToastrPosition.TopRight,
     });}
-    debugger;
+    
   
   
       
