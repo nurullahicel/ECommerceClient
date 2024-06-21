@@ -10,6 +10,7 @@ import {
   ToastrPosition,
 } from '../../ui/custom-toastr.service';
 import { TokenResponse } from '../../../contracts/token/tokenResponse';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
   providedIn: 'root',
@@ -36,20 +37,51 @@ export class UserService {
     password: string,
     callBackFunction?: () => void
   ): Promise<any> {
-    const observable: Observable<any | TokenResponse> = this.httpClientService.post<
-      any | TokenResponse
-    >(
-      {
-        controller: 'users',
-        action: 'login',
-      },
-      { usernameOrEmail, password }
-    );
+    const observable: Observable<any | TokenResponse> =
+      this.httpClientService.post<any | TokenResponse>(
+        {
+          controller: 'users',
+          action: 'login',
+        },
+        { usernameOrEmail, password }
+      );
 
-    const tokenResponse: TokenResponse = (await firstValueFrom(observable)) as TokenResponse;
+    const tokenResponse: TokenResponse = (await firstValueFrom(
+      observable
+    )) as TokenResponse;
     if (tokenResponse) {
-      localStorage.setItem("accessToken",tokenResponse.token.accessToken);
-     
+      localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+
+      this.toastrService.message(
+        'User login has been successfully provided',
+        'Successful user login',
+        {
+          messageType: ToastrMessageType.Success,
+          position: ToastrPosition.TopRight,
+        }
+      );
+    }
+    callBackFunction();
+  }
+  async googleLogin(
+    user: SocialUser,
+    callBackFunction?: () => void
+  ): Promise<any> {
+    const observable: Observable<SocialUser | TokenResponse> =
+      this.httpClientService.post<SocialUser | TokenResponse>(
+        {
+          controller: 'users',
+          action: 'google-login',
+        },
+        user
+      );
+
+    const tokenResponse: TokenResponse = (await firstValueFrom(
+      observable
+    )) as TokenResponse;
+    if (tokenResponse) {
+      localStorage.setItem('accessToken', tokenResponse.token.accessToken);
+
       this.toastrService.message(
         'User login has been successfully provided',
         'Successful user login',

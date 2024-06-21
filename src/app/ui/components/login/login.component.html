@@ -28,6 +28,11 @@
           placeholder="Password"          
         />        
       </div>
+      	<div class="col-md-8"  style="border: 1px;">
+           <asl-google-signin-button size="large"></asl-google-signin-button>
+          </div>
+      
+      <br>
       <button type="submit" class="btn btn-primary" (click)="Login(txtUsernameOrEmail.value,
         txtPassword.value)">Login</button>
     
