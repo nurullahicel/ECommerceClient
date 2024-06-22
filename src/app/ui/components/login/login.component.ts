@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { HttpClientService } from '../../../services/common/http-client.service';
 import { TokenResponse } from '../../../contracts/token/tokenResponse';
+import { UserAuthService } from '../../../services/common/models/user-auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ import { TokenResponse } from '../../../contracts/token/tokenResponse';
 })
 export class LoginComponent extends BaseComponent {
   constructor(
-    private userService: UserService,
+    private userAuthService: UserAuthService,
     spinner: NgxSpinnerService,
     private authService: AuthService,
     private activatedRoute:ActivatedRoute,
@@ -27,7 +28,7 @@ export class LoginComponent extends BaseComponent {
     socialAuthService.authState.subscribe(async (user:SocialUser)=>{
       console.log(user);
       spinner.show(SpinnerType.SquareJelly);
-      await userService.googleLogin(user,()=>{
+      await userAuthService.googleLogin(user,()=>{
         authService.identityCheck();
         spinner.hide(SpinnerType.SquareJelly);
       } );
@@ -37,7 +38,7 @@ export class LoginComponent extends BaseComponent {
 
   async Login(usernameOrEmail: string, password: string) {
     this.showSpinner(SpinnerType.SquareLoader);
-    await this.userService.Login(usernameOrEmail, password, () =>
+    await this.userAuthService.Login(usernameOrEmail, password, () =>
       {
         this.authService.identityCheck(),
         this.activatedRoute.queryParams.subscribe(params=>{
