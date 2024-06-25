@@ -9,6 +9,7 @@ import { SelectProductImageDialogComponent } from './select-product-image-dialog
 import { ProductsComponent } from '../admin/components/products/products.component';
 import { FileuploadModule } from '../services/common/fileupload/fileupload.module';
 import {MatCardModule} from '@angular/material/card';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import {MatCardModule} from '@angular/material/card';
     imports: [
         CommonModule,
         MatDialogModule,MatCardModule,MatButtonModule,        
-        FileuploadModule
+        FileuploadModule,
+        FormsModule
         
     ]
 })

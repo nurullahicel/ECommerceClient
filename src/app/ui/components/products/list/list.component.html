@@ -1,0 +1,42 @@
+<br>
+
+<div class="row"> 
+  <div class="card" style="width: 18rem;float: left;margin: 3px;"
+  *ngFor="let product of products">
+      <img width="250" height="250" *ngIf="!product.productImageFiles.length" src="../../../../../assets/product.png" class="card-img-top" alt="...">
+      <img width="250" height="250" *ngIf="product.productImageFiles.length" src="{{baseUrl.url}}/{{product.imagePath}}" class="card-img-top" alt="...">
+      
+      <div class="card-body">
+        <h5 class="card-title" style="font-size:medium;font-weight: 600;font-family:sans-serif">{{product.name}}</h5>
+        <hr>
+        <pre style="font-size:medium;font-weight: 600;font-family:sans-serif">Price:{{product.price| currency:'₺'}} <hr>Stock: {{product.stock}}</pre>
+        <a href="/basket" class="btn btn-success">Add </a>
+      </div>
+    </div>
+</div>
+ 
+  <br>
+<div class="row" >
+  <div class="col-md-4"></div>
+  <div class="col-md-4"><nav aria-label="Page navigation example" style="align-items: center;">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" style="color:black;font-weight:400;">
+          {{currentPageNo}}/{{totalPageCount}}
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" [routerLink]="['/products',currentPageNo-1 <= 0 ? 1 : currentPageNo-1]">Previous</a></li>      
+      <li class="page-item" *ngFor="let pageNo of pageList" routerLinkActive="active">
+        <a class="page-link" [routerLink]="['/products',pageNo]">{{pageNo}}</a></li>
+      <li class="page-item">
+        <a class="page-link" [routerLink]="['/products',currentPageNo+1 >= totalPageCount?totalPageCount:currentPageNo+1]">Next</a></li>
+    </ul>
+  </nav>
+</div>
+  <div class="col-md-4"></div>
+  
+</div>
+  
+
+
+  

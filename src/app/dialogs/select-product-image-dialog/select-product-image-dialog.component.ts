@@ -62,6 +62,12 @@ async deleteImage(imageId:string,event){
   })
 
 }
+showCase(imageId:string){
+  this.spinner.show(SpinnerType.SquareLoader);
+this.productService.changeShowcaseImage(imageId,this.data as string,()=>{
+this.spinner.hide(SpinnerType.SquareLoader)
+})
+}
 }
 
 

@@ -13,7 +13,7 @@ const routes: Routes = [
     (module=>module.CustomerModule),canActivate:[authGuard]},
     {path:"products",loadChildren:()=>import
     ("./admin/components/products/products.module").then
-    (module=>module.ProductsModule),canActivate:[authGuard]},
+    (module=>module.ProductsModule),canActivate:[authGuard]},    
     {path:"orders",loadChildren:()=>import
     ("./admin/components/order/order.module").then
     (module=>module.OrderModule),canActivate:[authGuard]}     
@@ -26,6 +26,9 @@ const routes: Routes = [
     {path:"products",loadChildren:()=>import
     ("./ui/components/products/products.module").then
     (module=>module.ProductsModule)},
+    {path:"products/:pageNo",loadChildren:()=>import
+      ("./ui/components/products/products.module").then
+      (module=>module.ProductsModule)},
     {path:"register",loadChildren:()=>import
       ("./ui/components/register/register.module").then
       (module=>module.RegisterModule)},

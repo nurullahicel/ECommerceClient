@@ -4,11 +4,17 @@
     <app-fileupload [options]="options"></app-fileupload>
 
     <mat-card class="product-image-card"  appearance="outlined" *ngFor="let image of images">
-      <mat-card-header>       
+      <mat-card-header> 
+
       </mat-card-header>
       <img mat-card-image style="width: 150px;height: 150px;" [src]="image.path" >
-      <mat-card-content>        
+      <mat-card-content> 
+        <input type="radio" name="img" (click)="showCase(image.id)" 
+        
+         style="height:18px; width:18px; vertical-align: middle;">       
       </mat-card-content>
+
+      
       <mat-card-actions>       
         <button mat-flat-button color="warn" (click)="deleteImage(image.id,$event)">Delete</button>
       </mat-card-actions>
