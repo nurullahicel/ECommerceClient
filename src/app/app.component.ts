@@ -8,6 +8,7 @@ import {
 import { MessageType } from './services/admin/izi-toast.service';
 import { AuthService } from './services/common/auth.service';
 import { Router } from '@angular/router';
+import { HttpClientService } from './services/common/http-client.service';
 
 declare var $: any;
 
@@ -20,7 +21,8 @@ export class AppComponent {
   constructor(
     public authService: AuthService,
     private toastrService: CustomToastrService,
-    private router:Router
+    private router:Router,
+    private httpClientService:HttpClientService
   ) {
     /* #region Toastr */
     // toastrService.message("merhaba","nuri",{messageType:ToastrMessageType.Info,
@@ -36,6 +38,9 @@ export class AppComponent {
     //   position:ToastrPosition.BottomRight
     //   });
     /* #endregion */
+    
+ 
+
     authService.identityCheck();
   }
 

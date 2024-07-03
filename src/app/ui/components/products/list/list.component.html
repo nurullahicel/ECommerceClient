@@ -10,7 +10,7 @@
         <h5 class="card-title" style="font-size:medium;font-weight: 600;font-family:sans-serif">{{product.name}}</h5>
         <hr>
         <pre style="font-size:medium;font-weight: 600;font-family:sans-serif">Price:{{product.price| currency:'₺'}} <hr>Stock: {{product.stock}}</pre>
-        <a href="/basket" class="btn btn-success">Add </a>
+        <a class="btn btn-success" (click)="addToBasket(product)">Add to Basket</a>
       </div>
     </div>
 </div>

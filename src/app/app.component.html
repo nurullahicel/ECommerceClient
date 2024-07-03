@@ -1,82 +1,169 @@
-<div class="row" style="height: 100%; " >
-
-    <nav class="navbar navbar-expand-lg  navbar-light bg-light" >
-      <div class="container-fluid py-2"  style="background-color: #A4C3B2; height:max-content;
-      margin-top: -8px; margin-bottom: -10px; " >
-        <a class="navbar-brand" routerLink="" style="color:darkcyan ;font-size: xx-large;font-style:oblique;font-weight: 600;font-family:serif;">E-Commerce</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active" style="font-size:x-large;font-family:serif; color: hsl(162, 100%, 20%);" aria-current="page" href="">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="products" style="font-size:x-large;font-family:serif; color: hsl(162, 100%, 20%);">Products</a>
-            </li>
-            <li class="nav-item">
+<div class="row" style="height: 100%">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div
+      class="container-fluid py-2"
+      style="
+        background-color: #a4c3b2;
+        height: max-content;
+        margin-top: -8px;
+        margin-bottom: -10px;
+      "
+    >
+      <a
+        class="navbar-brand"
+        routerLink=""
+        style="
+          color: darkcyan;
+          font-size: xx-large;
+          font-style: oblique;
+          font-weight: 600;
+          font-family: serif;
+        "
+        >E-Commerce</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              style="
+                font-size: x-large;
+                font-family: serif;
+                color: hsl(162, 100%, 20%);
+              "
+              aria-current="page"
+              href=""
+              >Home</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="products"
+              style="
+                font-size: x-large;
+                font-family: serif;
+                color: hsl(162, 100%, 20%);
+              "
+              >Products</a
+            >
+          </li>
+          <!-- <li class="nav-item">
               <a class="nav-link" routerLink="basket" style="font-size:x-large;font-family:serif; color: hsl(162, 100%, 20%);">Basket</a>
-            </li>
-  
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                style="color: #c9184a; background-color: #6B9080;font-size:x-large;"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-                *ngIf="authService.isAuthenticated"
-              >
-                Admin Panel
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #6B9080;">
-                <li>
-                  <a class="dropdown-item" routerLink="admin/" style="font-size:x-large;; color: hsl(162, 100%, 20%);">Dashboard</a>
-                </li>
-                <li>
-                  <a class="dropdown-item" routerLink="admin/customers" style="font-size:x-large; color: hsl(162, 100%, 20%);"
-                    >Customers</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" routerLink="admin/products" style="font-size:x-large; color: hsl(162, 100%, 20%);"
-                    >Products</a
-                  >
-                </li>
-                <li>
-                  <a class="dropdown-item" routerLink="admin/orders" style="font-size:x-large; color: hsl(162, 100%, 20%);">Orders</a>
-                </li>
-  
-              </ul>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="logout" (click)="signOut()" *ngIf="authService.isAuthenticated">Logout</a>
-            </li>
-                        
-            <li class="nav-item">
-              <a class="nav-link" routerLink="register" id="register" *ngIf="!authService.isAuthenticated">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="login" id="login" *ngIf="!authService.isAuthenticated">Login</a>
-            </li>
-          </ul >
-         
+            </li> -->
+
+          <li class="nav-item dropdown">
+            <a
+              class="nav-link dropdown-toggle"
+              style="
+                color: #c9184a;
+                background-color: #6b9080;
+                font-size: x-large;
+              "
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              *ngIf="authService.isAuthenticated"
+            >
+              Admin Panel
+            </a>
+            <ul
+              class="dropdown-menu"
+              aria-labelledby="navbarDropdown"
+              style="background-color: #6b9080"
+            >
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="admin/"
+                  style="font-size: x-large; color: hsl(162, 100%, 20%)"
+                  >Dashboard</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="admin/customers"
+                  style="font-size: x-large; color: hsl(162, 100%, 20%)"
+                  >Customers</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="admin/products"
+                  style="font-size: x-large; color: hsl(162, 100%, 20%)"
+                  >Products</a
+                >
+              </li>
+              <li>
+                <a
+                  class="dropdown-item"
+                  routerLink="admin/orders"
+                  style="font-size: x-large; color: hsl(162, 100%, 20%)"
+                  >Orders</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              id="logout"
+              (click)="signOut()"
+              *ngIf="authService.isAuthenticated"
+              >Logout</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="register"
+              id="register"
+              *ngIf="!authService.isAuthenticated"
+              >Sign Up</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              routerLink="login"
+              id="login"
+              *ngIf="!authService.isAuthenticated"
+              >Login</a
+            >
+          </li>
+        </ul>
+        <div class="d-flex">
+          <button
+            style="margin-right: 5px; margin-left: 3px ; font-size: 24px;"
+            class="btn btn-outline-success"
+            type="submit"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            Basket
+          </button>
         </div>
       </div>
-    </nav>
-  </div>
-  
+    </div>
+  </nav>
+</div>
+
 
 
 <div class="row">
@@ -102,3 +189,6 @@
   name="s3"
   type="square-spin"
 ></ngx-spinner>
+
+
+<app-basket></app-basket> 
