@@ -18,7 +18,10 @@ export class DashboardComponent extends BaseComponent implements OnInit {
     private signalRService: SignalRService
   ) {
     super(spinner);
+    signalRService.start(HubUrls.orderHub);
     signalRService.start(HubUrls.productHub);
+    
+
   }
   ngOnInit(): void {
     this.showSpinner(SpinnerType.SquareLoader);
@@ -26,6 +29,11 @@ export class DashboardComponent extends BaseComponent implements OnInit {
       {
         this.iziToast.message("Product Add",message,Position.TopCenter,MessageType.Info)
       });
+    
+    this.signalRService.on(ReceiveFunctions.orderAddedMessageReceiveFunction, message => 
+        {
+          this.iziToast.message("ORDER!!",message,Position.TopCenter,MessageType.Info)
+        });  
       
   }
 }
